@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Edit "{{ post['name'] }}"{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="name">Name</label>
+    <input name="name" id="name"  value="{{ post['name'] }}" required>
+    <label for="name">gender</label>
+    <input name="gender" id="gender"  value="{{ post['gender'] }}" required>
+    <label for="name">birthday</label>
+    <input name="birthday" id="birthday"  value="{{ post['birthday'] }}" required>
+    <label for="name">edu</label>
+    <input name="edu" id="edu"  value="{{request.form['edu'] or post['edu'] }}" required>
+    <label for="name">height</label>
+    <input name="height" id="height"  value="{{request.form['height'] or post['height'] }}" required>
+    <label for="name">figure</label>
+    <input name="figure" id="figure"  value="{{request.form['figure'] or post['figure'] }}" required>
+    <label for="name">income</label>
+    <input name="income" id="income"  value="{{request.form['income'] or post['income'] }}" required>
+    <label for="name">hobby</label>
+    <input name="hobby" id="hobby"  value="{{request.form['hobby'] or post['hobby'] }}" required>
+    <label for="name">smoking</label>
+    <input name="smoking" id="smoking"  value="{{request.form['smoking'] or post['smoking'] }}" required>
+
+
+
+    <label for="body">Body</label>
+    <textarea name="body" id="body">{{ request.form['body'] or post['body'] }}</textarea>
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}

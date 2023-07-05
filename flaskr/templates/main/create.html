@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}New Post{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="name">氏名</label>
+    <input name="name" id="name" value="{{ request.form['name'] }}" required>
+
+    <label for="gender">性別(男が１、女が２)</label>
+    <input name="gender" id="gender" value="{{ request.form['gender'] }}" required>
+
+    <label for="birthday">生年月日(yyyy-mm-dd形式)</label>
+    <input name="birthday" id="birthday" value="{{ request.form['birthday'] }}" required>
+
+    <label for="edu">学歴</label>
+    <input name="edu" id="edu" value="{{ request.form['edu'] }}" required>
+
+    <label for="height">身長</label>
+    <input name="height" id="height" value="{{ request.form['height'] }}" required>
+
+    <label for="figure">体形</label>
+    <input name="figure" id="figure" value="{{ request.form['figure'] }}" required>
+
+    <label for="income">収入</label>
+    <input name="income" id="income" value="{{ request.form['income'] }}" required>
+
+    <label for="hobby">趣味</label>
+    <input name="hobby" id="hobby" value="{{ request.form['hobby'] }}" required>
+
+    <label for="smoking">喫煙(喫煙者１、非喫煙者２)</label>
+    <input name="smoking" id="smoking" value="{{ request.form['smoking'] }}" required>
+
+    <label for="body">Body</label>
+    <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Posts{% endblock %}</h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('main.create') }}">New</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% for row in posts %}
+  <article class="post">
+    <header>
+      <div>
+        <h1>{{row['name']}}</h1>
+        <div class="about"> 年収：{{ row['income']}}</div>
+        <a class="action" href="{{url_for('main.update',id=row['id'])}}">edit</a>
+      </div>
+    </header>
+  </article>
+  {% if not loop.last %}
+    <hr>
+  {% endif %}
+{% endfor %}
+
+{% endblock %}
