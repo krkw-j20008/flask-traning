@@ -2,6 +2,8 @@ from flask import (
     Blueprint, flash, g, redirect, render_template, request, url_for
 )
 from werkzeug.exceptions import abort
+from flask import request
+
 
 from flaskr.auth import login_required
 from flaskr.db import get_db
@@ -10,13 +12,28 @@ bp = Blueprint('main', __name__)
 
 @bp.route('/')
 def index():
+    keyword = request.args.get('keyword', '')  # クエリパラメータからキーワードを取得
+    gender = request.args.get('gender', '')  # クエリパラメータから性別を取得
     db = get_db()
-    posts = db.execute(
-        'SELECT id, gender, body, birthday,edu,name,income'
+    query = (
+        'SELECT id, gender, body, birthday, edu, name, income'
         ' FROM marriage'
-    ).fetchall()
-    print('ok', posts)
+        ' WHERE name LIKE ?'  # キーワードに一致する名前のみを取得
+    )
+    params = ['%' + keyword + '%']
+    if gender:  # 性別が選択されている場合はクエリに性別条件を追加
+        query += ' AND gender = ?'
+        params.append(gender)
+    posts = db.execute(query, params).fetchall()
     return render_template('main/index.html', posts=posts)
+
+    
+    # db = get_db()
+    # posts = db.execute(
+    #     'SELECT id, gender, body, birthday,edu,name,income'
+    #     ' FROM marriage'
+    # ).fetchall()
+    # return render_template('main/index.html', posts=posts)
 
 
 @bp.route('/create', methods=('GET', 'POST'))

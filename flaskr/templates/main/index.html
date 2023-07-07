@@ -3,11 +3,23 @@
 {% block header %}
   <h1>{% block title %}Posts{% endblock %}</h1>
   {% if g.user %}
-    <a class="action" href="{{ url_for('main.create') }}">New</a>
+    <a class="action" href="{{ url_for('main.index') }}">検索解除</a>
+    <a class="action" href="{{ url_for('main.create') }}">新規作成</a>
   {% endif %}
 {% endblock %}
 
 {% block content %}
+
+<form method="get" action="{{ url_for('main.index') }}">
+  <input type="text" name="keyword" placeholder="検索したい名前を入力してください">
+
+  <select name="gender">
+    <option value="">すべて</option>
+    <option value="1">男性</option>
+    <option value="2">女性</option>
+  </select>
+  <button type="submit">検索</button>
+</form>
 
 {% for row in posts %}
   <article class="post">
