@@ -14,7 +14,7 @@
   <input type="text" name="keyword" placeholder="検索したい名前を入力してください">
 
   <select name="gender">
-    <option value="">すべて</option>
+    <option value="">性別選択</option>
     <option value="1">男性</option>
     <option value="2">女性</option>
   </select>
@@ -27,7 +27,10 @@
       <div>
         <h1>{{row['name']}}</h1>
         <div class="about"> 年収：{{ row['income']}}</div>
-        <a class="action" href="{{url_for('main.update',id=row['id'])}}">edit</a>
+        
+        <image src="{{row['image']}}"></image>
+        <a class="action" href="{{url_for('main.update',id=row['id'])}}">情報変更</a>
+
       </div>
     </header>
   </article>

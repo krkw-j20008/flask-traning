@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Edit "{{ post['name'] }}"{% endblock %}</h1>
+  <h1>{% block title %}変更 "{{ post['name'] }}"さま{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
@@ -12,6 +12,10 @@
     <input name="gender" id="gender"  value="{{ post['gender'] }}" required>
     <label for="name">birthday</label>
     <input name="birthday" id="birthday"  value="{{ post['birthday'] }}" required>
+
+    <label for="name">work</label>
+    <input name="work" id="work"  value="{{request.form['work'] or post['work'] }}" required>
+
     <label for="name">edu</label>
     <input name="edu" id="edu"  value="{{request.form['edu'] or post['edu'] }}" required>
     <label for="name">height</label>
@@ -24,6 +28,10 @@
     <input name="hobby" id="hobby"  value="{{request.form['hobby'] or post['hobby'] }}" required>
     <label for="name">smoking</label>
     <input name="smoking" id="smoking"  value="{{request.form['smoking'] or post['smoking'] }}" required>
+    <label for="name">state</label>
+    <input name="state" id="state"  value="{{request.form['state'] or post['state'] }}" required>
+    
+    
 
 
 

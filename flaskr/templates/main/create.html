@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-  <form method="post">
+<form method="post" enctype="multipart/form-data">
     <label for="name">氏名</label>
     <input name="name" id="name" value="{{ request.form['name'] }}" required>
 
@@ -17,6 +17,9 @@
 
     <label for="edu">学歴</label>
     <input name="edu" id="edu" value="{{ request.form['edu'] }}" required>
+
+    <label for="work">職種</label>
+    <input name="work" id="work" value="{{ request.form['work'] }}" required>
 
     <label for="height">身長</label>
     <input name="height" id="height" value="{{ request.form['height'] }}" required>
@@ -35,6 +38,14 @@
 
     <label for="body">Body</label>
     <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
+    
+    <label for="state">婚活状況</label>
+    <input name="state" id="state" value="{{ request.form['state'] }}" required>
+
+    <label for="image">写真</label>
+    <input name="image" id="image" type="file" required>
+
+
     <input type="submit" value="Save">
   </form>
 {% endblock %}

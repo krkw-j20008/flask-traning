@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}閲覧 "{{ post['name'] }}"さま{% endblock %}</h1>
+{% endblock %}
+
+
+{% block content %}
+
+
+<a class="action" href="{{ url_for('main.index') }}">戻る</a>
+
+{% endblock %}

@@ -13,10 +13,13 @@ CREATE TABLE marriage (
   gender INTEGER NOT NULL,
   birthday TEXT NOT NULL,
   edu TEXT NOT NULL,
+  work TEXT NOT NULL,
   height INTEGER NOT NULL,
   figure TEXT NOT NULL,
   income INTEGER NOT NULL,
   hobby TEXT,
   smoking INTEGER ,
-  body TEXT NOT NULL
+  body TEXT ,
+  state TEXT ,
+  image TEXT 
 );
